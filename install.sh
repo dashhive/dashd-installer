@@ -2,6 +2,7 @@ sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install git -y
 sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils -y
 sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev -y
+sudo apt-get install -y dh-autoreconf
 
 #Option 1: Debian :
 #echo "deb http://archive.debian.org/debian/ squeeze main contrib non-free" >> /etc/apt/sources.list
@@ -26,14 +27,25 @@ swapon /tmp.swap
 # Install BDB
 #########################
 
+# See also https://github.com/bitcoin/bitcoin/issues/2998
+# https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md#berkeley-db
+
 #sudo apt-get install libdb4.8-dev libdb4.8++-dev -y --allow-unauthenticated
 
 # not using https on purpose because oracle doesn't support it... :'(
 wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 tar -xzvf db-4.8.30.NC.tar.gz
 pushd db-4.8.30.NC/build_unix/
-  ../dist/configure --enable-cxx
+  ../dist/configure --prefix=/usr/local --enable-cxx
   make -j4
+  sudo make install
+
+  sudo bash -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/db-4.8.30.conf'
+  sudo ldconfig
+
+  #sudo ln -s /usr/local/BerkeleyDB.4.8 /usr/include/db4.8
+  #sudo ln -s /usr/local/db4.8/include/* /usr/include
+  #sudo ln -s /usr/local/db4.8/lib/* /usr/lib
 popd
 
 ##########################
@@ -87,5 +99,9 @@ pushd dash
   make
 popd
 
+mkdir ~/.dashcore
+
 swapoff /tmp.swap
 rm /tmp.swap
+
+apt -y install libzmq5 libzmq3-dev -y
