@@ -12,8 +12,15 @@ and http://raspnode.com/diyBitcoin.html
 ```
 install.sh
 ## TODO systemd file for dash
-./dashcore/dash/src/dashd --daemon
+./dashcore/dash/src/dashd -daemon -conf=/opt/dashcore/dash.conf -datadir=/opt/dashcore/var
 ```
+
+From testnet to mainnet
+--------
+
+Replace `testnet=1` with `testnet=0` in `~/.dashcore/dash.conf`
+
+Change `network: "testnet"` to `network: "mainnet"` in `bitcore-node-dash.json`
 
 
 Troubleshooting
@@ -102,4 +109,24 @@ pushd db-4.8.30.NC/build_unix/
   sudo bash -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/db-4.8.30.conf'
   sudo ldconfig
 popd
+```
+
+configure: error: No working boost sleep implementation found.
+------
+
+Problem:
+
+```
+./configure
+
+...
+
+checking for mismatched boost c++11 scoped enums... ok
+configure: error: No working boost sleep implementation found.
+```
+
+Solution:
+
+```
+sudo apt install -y libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
 ```
