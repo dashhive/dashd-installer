@@ -58,7 +58,7 @@ popd
 wget https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz
 tar -zxvf libsodium-1.0.3.tar.gz
 pushd libsodium-1.0.3/
-  ./configure
+  ./configure --prefix=/usr/local
   make
   sudo make install
 popd
@@ -76,7 +76,7 @@ popd
 wget http://download.zeromq.org/zeromq-4.1.3.tar.gz
 tar -zxvf zeromq-4.1.3.tar.gz
 pushd zeromq-4.1.3/
-  ./configure
+  ./configure --prefix=/usr/local
   make
   sudo make install
   sudo ldconfig
@@ -97,7 +97,7 @@ git clone --depth 1 https://github.com/dashpay/dash
 
 pushd dash
   ./autogen.sh
-  ./configure --without-gui --disable-wallet | tee config.log.txt # --without-miniupnpc --with-incompatible-bdb
+  ./configure --prefix=/usr/local # --without-gui --disable-wallet | tee config.log.txt # --without-miniupnpc --with-incompatible-bdb
   make
 popd
 
