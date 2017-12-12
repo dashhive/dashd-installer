@@ -165,3 +165,39 @@ pushd /opt/dashcore/var/
   rm peers.dat
 popd
 ```
+
+Killed
+------
+
+Problem:
+
+Starts and then dies with no explanation.
+
+It may think it's still running... ?
+
+Solution:
+
+In at least one case all I had to do was delete the lock and pid files:
+
+```
+rm .lock dashd.pid
+```
+
+ZMQ connection delay
+------
+
+Problem:
+
+```
+[2017-12-12T11:39:04.523Z] warn: ZMQ connection delay: tcp://127.0.0.1:28332
+```
+
+```
+netcat localhost 28332
+# connection refused
+```
+
+Solution:
+
+None yet...
+
