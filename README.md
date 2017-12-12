@@ -199,5 +199,9 @@ netcat -v localhost 28332
 
 Solution:
 
-None yet...
+You should use `--prefix=/usr/local` when compiling libsodium, libzmq3, and then again
+when compiling `bitcore`/`dashd` itself.
 
+```
+./configure --prefix=/usr/local
+```
