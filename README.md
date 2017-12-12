@@ -193,8 +193,8 @@ Problem:
 ```
 
 ```
-netcat localhost 28332
-# connection refused
+netcat -v localhost 28332
+# Connection refused
 ```
 
 Solution:
