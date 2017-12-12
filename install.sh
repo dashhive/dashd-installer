@@ -89,7 +89,7 @@ popd
 
 mkdir dashcore
 cd dashcore
-git clone https://github.com/dashpay/dash
+git clone --depth 1 https://github.com/dashpay/dash
 
 #Or if you want to test the last updates :
 #git clone https://github.com/dashpay/dash -b v0.12.2.x
@@ -97,7 +97,7 @@ git clone https://github.com/dashpay/dash
 
 pushd dash
   ./autogen.sh
-  ./configure --without-gui --disable-wallet # --without-miniupnpc --with-incompatible-bdb
+  ./configure --without-gui --disable-wallet | tee config.log.txt # --without-miniupnpc --with-incompatible-bdb
   make
 popd
 

@@ -1,8 +1,8 @@
-apt install -y python
+sudo apt install -y python
 
 mkdir insight
 pushd insight
-  git clone https://github.com/dashevo/bitcore-node-dash -b skip-dash-download
+  git clone --depth 1 https://github.com/dashevo/bitcore-node-dash -b skip-dash-download
   pushd bitcore-node-dash
     npm install
     npm install insight-api-dash --S
