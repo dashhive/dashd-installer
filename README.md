@@ -13,7 +13,7 @@ and http://raspnode.com/diyBitcoin.html
 install.sh
 ## TODO systemd file for dash
 ./dashcore/dash/src/dashd -daemon -conf=/opt/dashcore/dash.conf -datadir=/opt/dashcore/var
-~/insight/bitcore-node-dash/bin/bitcore-node-dash start -c bitcore-node-dash.json
+~/insight/bitcore-node-dash/bin/bitcore-node-dash start -c /opt/dashcore/ # where bitcore-node-dash.json is
 ```
 
 From testnet to mainnet
