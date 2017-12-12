@@ -130,3 +130,37 @@ Solution:
 ```
 sudo apt install -y libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
 ```
+
+Error: Failed to load masternode cache
+--------
+
+Problem:
+
+```
+Error: Failed to load masternode cache from /opt/dashcore/var/mncache.dat
+```
+
+Solution:
+
+You've probably run out of disk space.
+
+```bash
+# assuming -datadir=/opt/dashcore/var/
+rm /opt/dashcore/var/debug.log
+```
+
+You'll need to delete the caches:
+
+```bash
+# rm /opt/dashcore/var/{banlist.dat,fee_estimates.dat,governance.dat,mncache.dat,mnpayments.dat,netfulfilled.dat,peers.dat}
+
+pushd /opt/dashcore/var/
+  rm banlist.dat
+  rm fee_estimates.dat
+  rm governance.dat
+  rm mncache.dat
+  rm mnpayments.dat
+  rm netfulfilled.dat
+  rm peers.dat
+popd
+```

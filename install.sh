@@ -3,6 +3,7 @@ sudo apt-get install git -y
 sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils -y
 sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev -y
 sudo apt-get install -y dh-autoreconf
+sudo apt -y install libzmq5 libzmq3-dev -y
 
 #Option 1: Debian :
 #echo "deb http://archive.debian.org/debian/ squeeze main contrib non-free" >> /etc/apt/sources.list
@@ -36,7 +37,7 @@ swapon /tmp.swap
 wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 tar -xzvf db-4.8.30.NC.tar.gz
 pushd db-4.8.30.NC/build_unix/
-  ../dist/configure --prefix=/usr/local --enable-cxx
+  ../dist/configure --prefix=/usr/local --enable-cxx # --disable-shared
   make -j4
   sudo make install
 
@@ -71,6 +72,7 @@ popd
 #  sudo ldconfig
 #popd
 
+# This installs support for libzmq3 as well, I think
 wget http://download.zeromq.org/zeromq-4.1.3.tar.gz
 tar -zxvf zeromq-4.1.3.tar.gz
 pushd zeromq-4.1.3/
@@ -95,7 +97,7 @@ git clone https://github.com/dashpay/dash
 
 pushd dash
   ./autogen.sh
-  ./configure
+  ./configure --without-gui --disable-wallet # --without-miniupnpc --with-incompatible-bdb
   make
 popd
 
@@ -103,5 +105,3 @@ mkdir ~/.dashcore
 
 swapoff /tmp.swap
 rm /tmp.swap
-
-apt -y install libzmq5 libzmq3-dev -y
