@@ -23,6 +23,18 @@ Replace `testnet=1` with `testnet=0` in `~/.dashcore/dash.conf`
 
 Change `network: "testnet"` to `network: "mainnet"` in `bitcore-node-dash.json`
 
+Setting rpcauth
+--------
+
+```
+/opt/dashcore/dash/share/rpcuser/rpcuser.py dashd
+String to be appended to /opt/dashcore/dash.conf:
+rpcauth=dashd:d390a090f89a2354a8f2492cefd53$733490c2dddc50f61802d2038e9d238a75d3d1dec6ca19240cb9399d9a7728f1
+Your password:
+UHpQuY6Xde8_HJVWwEMn928n7-O4O3mrSwOZ0pR0-PM=
+```
+
+
 
 Troubleshooting
 =====
