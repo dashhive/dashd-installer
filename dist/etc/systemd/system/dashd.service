@@ -24,6 +24,8 @@ Group=dashpay
 
 WorkingDirectory=/opt/dashpay
 # custom directory cannot be set and will be the place where dashpay exists, not the working directory
+Environment="LD_LIBRARY_PATH=/opt/dashpay/lib"
+Environment="PKG_CONFIG_PATH=/opt/dashpay/lib/pkgconfig"
 #ExecStart=/opt/dashpay/bin/dashd -daemon -conf=/opt/dashpay/etc/dash.conf -datadir=/opt/dashpay/var
 ExecStart=/opt/dashpay/bin/dashd -conf=/opt/dashpay/etc/dash.conf -datadir=/opt/dashpay/var
 ExecReload=/bin/kill -USR1 $MAINPID
