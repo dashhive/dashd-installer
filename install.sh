@@ -17,6 +17,7 @@ sudo mkdir -p $my_prefix
 export CPPFLAGS="-I$my_prefix/include ${CPPFLAGS:-}"
 export CXXFLAGS="$CPPFLAGS"
 export LDFLAGS="-L$my_prefix/lib ${LDFLAGS:-}"
+#export LD_RUN_PATH="$my_prefix/lib:${LD_RUN_PATH:-}"
 export PKG_CONFIG_PATH="$my_prefix/lib/pkgconfig"
 
 #source ./installer/ubuntu.sh
