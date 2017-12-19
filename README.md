@@ -1,4 +1,4 @@
-dash-insight-installer.sh
+dashd-installer.sh
 =======
 
 [dashd-installer.sh](https://github.com/dashhive/dashd-installer.sh) |
