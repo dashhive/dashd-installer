@@ -6,8 +6,12 @@ dashd-installer.sh
 
 This script installs a dash full node on Debian based systems such as Ubuntu (i.e. on Digital Ocean) and Raspbian (i.e. on Raspberry Pi)
 
+This installs the following components to `/opt/dashpay`:
+
+* BerkleyDB
+* libsodium
+* ZeroMQ
 * Dash Full Node [`dashpay/dash`](https://github.com/dashpay/dash)
-* Insight API [`dashevo/insight-api-dash`](https://github.com/dashevo/insight-api-dash#getting-started)
 
 Installation
 -----
