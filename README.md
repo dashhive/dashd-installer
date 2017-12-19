@@ -33,6 +33,8 @@ Everything for `dashd` installs to `/opt/dashpay`:
 /opt/dashpay/share
 ```
 
+*Uninstall*: `rm -rf /opt/dashpay`
+
 Configuration
 --------
 
@@ -40,6 +42,7 @@ The configs can be edited at:
 
 ```
 /opt/dashpay/etc/dash.conf
+/etc/systemd/system/dashd.service
 ```
 
 daemon control
