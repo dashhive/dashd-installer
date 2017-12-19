@@ -33,3 +33,5 @@ pushd $dash_prefix/bitcore
   chmod a+x ./bin/bitcore-node-dash
   LD_LIBRARY_PATH="$my_prefix/lib:${LD_RUN_PATH:-}" $my_node $dash_prefix/bitcore/bin/bitcore-node-dash start -c $dash_prefix/
 popd
+
+rsync -av ./bitcore-node-dash.json /opt/dashpay/etc/

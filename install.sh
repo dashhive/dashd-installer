@@ -2,10 +2,16 @@
 set -u
 set -e
 
-my_tmpd=$(mktemp -d)
+my_tmpd=/opt/dashpay/deps
+mkdir -p $my_tmpd
+#my_tmpd=$(mktemp -d)
+echo "#################################"
+echo "##  tmpdir: $my_tmpd  ##"
+echo "#################################"
 dash_prefix=/opt/dashpay
 #my_prefix=/usr/local
 my_prefix=/opt/dashpay
+sudo mkdir -p $dash_prefix/etc $dash_prefix/var
 sudo mkdir -p $my_prefix
 
 export CPPFLAGS="-I$my_prefix/include ${CPPFLAGS:-}"
@@ -109,8 +115,6 @@ pushd $my_tmpd
     sudo make install
   popd
 
-
-
   #########################
   # swap off
   #########################
@@ -119,3 +123,8 @@ pushd $my_tmpd
   rm ./tmp.swap
 
 popd
+
+sudo adduser dashpay --home /opt/dashpay
+sudo rsync -av ./dash.conf $dash_prefix/etc/
+sudo chown -R dashpay:dashpay $dash_prefix/
+sudo rsync -av ./dist/etc/systemd/system/dashd.conf /etc/systemd/system/

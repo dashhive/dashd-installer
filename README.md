@@ -1,19 +1,60 @@
 dash-insight-installer.sh
 =======
 
-A script to install
-[`dashevo/insight-api-dash`](https://github.com/dashevo/insight-api-dash#getting-started)
-on Ubuntu and Raspbian.
+This script installs a dash full node on Debian based systems such as Ubuntu (i.e. on Digital Ocean) and Raspbian (i.e. on Raspberry Pi)
 
-Based on https://medium.com/@obusco/setup-instant-send-transaction-the-comprehensive-way-a80a8a0572e
-and http://raspnode.com/diyBitcoin.html
+* Dash Full Node [`dashpay/dash`](https://github.com/dashpay/dash)
+* Insight API [`dashevo/insight-api-dash`](https://github.com/dashevo/insight-api-dash#getting-started)
 
+Installation
+-----
+
+```bash
+git clone https://github.com/dashhive/dash-insight-installer.sh.git
+pushd ./dash-insight-installer
+bash install.sh
+```
+
+Configuration
+--------
+
+The configs can be edited at:
+
+```
+/opt/dashpay/etc/dash.conf
+/opt/dashpay/etc/bitcore-node-dash.json
+```
+
+daemon control
+--------
+
+`dashd` can be restarted with `systemctl`:
+
+```bash
+systemctl restart dashd
+```
+
+You can see the logs with `journalctl`:
+
+```bash
+journalctl -xefu dashd
+```
+
+You can disable and enable `dashd` loading on startup:
+
+```bash
+systemctl enable dashd
+systemctl disable dashd
+```
+
+Manual daemon control
+-----------------
 
 ```
 install.sh
 ## TODO systemd file for dash
-./dashcore/dash/src/dashd -daemon -conf=/opt/dashcore/dash.conf -datadir=/opt/dashcore/var
-~/insight/bitcore-node-dash/bin/bitcore-node-dash start -c /opt/dashcore/ # where bitcore-node-dash.json is
+/opt/dashpay/bin/dashd -daemon -conf=/opt/dashpay/etc/dash.conf -datadir=/opt/dashpay/var
+/opt/dashpay/bitcore/bin/bitcore-node-dash start -c /opt/dashpay/etc/ # where bitcore-node-dash.json is
 ```
 
 From testnet to mainnet
@@ -27,14 +68,18 @@ Setting rpcauth
 --------
 
 ```
-/opt/dashcore/dash/share/rpcuser/rpcuser.py dashd
-String to be appended to /opt/dashcore/dash.conf:
+/opt/dashpay/dash/share/rpcuser/rpcuser.py dashd
+String to be appended to /opt/dashpay/dash.conf:
 rpcauth=dashd:d390a090f89a2354a8f2492cefd53$733490c2dddc50f61802d2038e9d238a75d3d1dec6ca19240cb9399d9a7728f1
 Your password:
 UHpQuY6Xde8_HJVWwEMn928n7-O4O3mrSwOZ0pR0-PM=
 ```
 
+Resources
+====
 
+Based on https://medium.com/@obusco/setup-instant-send-transaction-the-comprehensive-way-a80a8a0572e
+and http://raspnode.com/diyBitcoin.html
 
 Troubleshooting
 =====
@@ -150,7 +195,7 @@ Error: Failed to load masternode cache
 Problem:
 
 ```
-Error: Failed to load masternode cache from /opt/dashcore/var/mncache.dat
+Error: Failed to load masternode cache from /opt/dashpay/var/mncache.dat
 ```
 
 Solution:
@@ -158,16 +203,16 @@ Solution:
 You've probably run out of disk space.
 
 ```bash
-# assuming -datadir=/opt/dashcore/var/
-rm /opt/dashcore/var/debug.log
+# assuming -datadir=/opt/dashpay/var/
+rm /opt/dashpay/var/debug.log
 ```
 
 You'll need to delete the caches:
 
 ```bash
-# rm /opt/dashcore/var/{banlist.dat,fee_estimates.dat,governance.dat,mncache.dat,mnpayments.dat,netfulfilled.dat,peers.dat}
+# rm /opt/dashpay/var/{banlist.dat,fee_estimates.dat,governance.dat,mncache.dat,mnpayments.dat,netfulfilled.dat,peers.dat}
 
-pushd /opt/dashcore/var/
+pushd /opt/dashpay/var/
   rm banlist.dat
   rm fee_estimates.dat
   rm governance.dat
@@ -214,7 +259,7 @@ netcat -v localhost 28332
 You can know for sure that the
 
 ```
-grep -r 'ENABLE_ZMQ' ~/dashcore/dash/config.log
+grep -r 'ENABLE_ZMQ' /opt/dashpay/deps/dash/config.log
 ```
 
 If you see `#define ENABLE_ZMQ 0` instead of `#define ENABLE_ZMQ 1`, then you definitely don't have ZMQ support compiled in.
