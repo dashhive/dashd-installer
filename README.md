@@ -197,6 +197,16 @@ netcat -v localhost 28332
 # Connection refused
 ```
 
+[Test](https://bitcoin.stackexchange.com/a/65066/68465):
+
+You can know for sure that the
+
+```
+grep -r 'ENABLE_ZMQ' ~/dashcore/dash/config.log
+```
+
+If you see `#define ENABLE_ZMQ 0` instead of `#define ENABLE_ZMQ 1`, then you definitely don't have ZMQ support compiled in.
+
 Solution:
 
 You should use `--prefix=/usr/local` when compiling libsodium, libzmq3, and then again
