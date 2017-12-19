@@ -128,7 +128,7 @@ popd
 sudo adduser dashpay --home /opt/dashpay --disabled-password --gecos ''
 sudo rsync -av ./dash.conf $dash_prefix/etc/
 sudo chown -R dashpay:dashpay $dash_prefix/
-sudo rsync -av ./dist/etc/systemd/system/dashd.conf /etc/systemd/system/
+sudo rsync -av ./dist/etc/systemd/system/dashd.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable dashd
 sudo systemctl start dashd
