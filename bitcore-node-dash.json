@@ -1,5 +1,5 @@
 {
-  "network": "testnet",
+  "network": "mainnet",
   "port": 3001,
   "services": [
     "bitcoind",
