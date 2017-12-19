@@ -15,6 +15,25 @@ pushd ./dash-insight-installer
 bash install.sh
 ```
 
+Everything for `dashd` installs to `/opt/dashpay`:
+
+```
+/opt/dashpay/bin/dashd
+/opt/dashpay/docs
+/opt/dashpay/etc
+/opt/dashpay/include
+/opt/dashpay/lib
+/opt/dashpay/share
+```
+
+Everything for Insight API installs to `/opt/dashpay`:
+
+```
+/opt/dashpay/bin/bitcore-node-dash
+/opt/dashpay/bin/node
+/opt/dashpay/bin/npm
+```
+
 Configuration
 --------
 
