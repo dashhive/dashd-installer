@@ -14,7 +14,7 @@ export LDFLAGS="-L$my_prefix/lib ${LDFLAGS:-}"
 export PKG_CONFIG_PATH="$my_prefix/lib/pkgconfig"
 
 #source ./installer/ubuntu.sh
-sudo apt update # && sudo apt -y upgrade
+sudo apt update -y # && sudo apt -y upgrade
 sudo apt install -y wget curl git
 sudo apt install -y build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils dh-autoreconf
 sudo apt install -y libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
