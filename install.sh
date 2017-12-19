@@ -125,7 +125,7 @@ pushd $my_tmpd
 
 popd
 
-sudo adduser dashpay --home /opt/dashpay
+sudo adduser dashpay --home /opt/dashpay --disabled-password --gecos ''
 sudo rsync -av ./dash.conf $dash_prefix/etc/
 sudo chown -R dashpay:dashpay $dash_prefix/
 sudo rsync -av ./dist/etc/systemd/system/dashd.conf /etc/systemd/system/
