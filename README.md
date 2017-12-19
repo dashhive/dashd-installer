@@ -17,8 +17,8 @@ Installation
 -----
 
 ```bash
-git clone https://github.com/dashhive/dash-insight-installer.sh.git
-pushd ./dash-insight-installer
+git clone https://github.com/dashhive/dashd-installer.sh.git
+pushd ./dashd-installer
 bash install.sh
 ```
 
@@ -68,8 +68,6 @@ Manual daemon control
 -----------------
 
 ```
-install.sh
-## TODO systemd file for dash
 /opt/dashpay/bin/dashd -daemon -conf=/opt/dashpay/etc/dash.conf -datadir=/opt/dashpay/var
 ```
 
