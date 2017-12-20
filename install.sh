@@ -49,10 +49,10 @@ pushd $my_tmpd
   # "g++: internal compiler error: Killed (program cc1plus)"
   # so it's best to just go ahead and allocate some swap before the compile
   # truncate -s 2048M /tmp.swap
-  fallocate -l 2G ./tmp.swap
-  mkswap ./tmp.swap
-  chmod 0600 ./tmp.swap
-  swapon ./tmp.swap
+  sudo fallocate -l 2G ./tmp.swap
+  sudo mkswap ./tmp.swap
+  sudo chmod 0600 ./tmp.swap
+  sudo swapon ./tmp.swap
 
 
 
@@ -121,8 +121,8 @@ pushd $my_tmpd
   # swap off
   #########################
 
-  swapoff ./tmp.swap
-  rm ./tmp.swap
+  sudo swapoff ./tmp.swap
+  sudo rm ./tmp.swap
 
 popd
 

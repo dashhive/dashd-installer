@@ -16,6 +16,11 @@ This installs the following components to `/opt/dashpay`:
 Installation
 -----
 
+This is the no-hassle automatic installation.
+If you're interested in the details of the process and want to learn
+more either read the source or check out this article:
+https://github.com/dashhive/dashd-installer.sh/master/BLOG.md
+
 ```bash
 git clone https://github.com/dashhive/dashd-installer.sh.git
 pushd ./dashd-installer
