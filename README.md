@@ -23,7 +23,7 @@ https://github.com/dashhive/dashd-installer.sh/blob/master/BLOG.md
 
 ```bash
 git clone https://github.com/dashhive/dashd-installer.sh.git
-pushd ./dashd-installer
+pushd ./dashd-installer.sh/
 bash install.sh
 ```
 
