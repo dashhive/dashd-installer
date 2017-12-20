@@ -3,7 +3,7 @@ set -u
 set -e
 
 my_tmpd=/opt/dashpay/deps
-mkdir -p $my_tmpd
+sudo mkdir -p $my_tmpd
 #my_tmpd=$(mktemp -d)
 echo "#################################"
 echo "##  tmpdir: $my_tmpd  ##"
@@ -13,6 +13,7 @@ dash_prefix=/opt/dashpay
 my_prefix=/opt/dashpay
 sudo mkdir -p $dash_prefix/etc $dash_prefix/var
 sudo mkdir -p $my_prefix
+sudo chown -R $(whoami):$(whoami) $my_tmpd $dash_prefix
 
 export CPPFLAGS="-I$my_prefix/include ${CPPFLAGS:-}"
 export CXXFLAGS="$CPPFLAGS"
