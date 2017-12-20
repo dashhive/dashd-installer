@@ -2,6 +2,7 @@
 set -u
 set -e
 
+DASH_NUM_CPUS=${DASH_NUM_CPUS:-1}
 my_tmpd=/opt/dashpay/deps
 sudo mkdir -p $my_tmpd
 #my_tmpd=$(mktemp -d)
@@ -69,7 +70,7 @@ pushd $my_tmpd
   tar -xzvf db-4.8.30.NC.tar.gz
   pushd db-4.8.30.NC/build_unix/
     ../dist/configure --prefix=$my_prefix --enable-cxx # --disable-shared
-    make # -j2
+    make -j$DASH_NUM_CPUS
     sudo make install
 
     sudo ldconfig
@@ -86,7 +87,7 @@ pushd $my_tmpd
   tar -zxvf libsodium-1.0.3.tar.gz
   pushd libsodium-1.0.3/
     ./configure --prefix=$my_prefix
-    make # -j2
+    make -j$DASH_NUM_CPUS
     sudo make install
   popd
 
@@ -95,7 +96,7 @@ pushd $my_tmpd
   tar -zxvf zeromq-4.1.3.tar.gz
   pushd zeromq-4.1.3/
     ./configure --prefix=$my_prefix
-    make # -j2
+    make -j$DASH_NUM_CPUS
     sudo make install
     sudo ldconfig
   popd
@@ -113,7 +114,7 @@ pushd $my_tmpd
   pushd dash
     ./autogen.sh
     ./configure --prefix=$my_prefix --without-gui # --disable-wallet | tee config.log.txt # --without-miniupnpc --with-incompatible-bdb
-    make # -j2
+    make -j$DASH_NUM_CPUS
     sudo make install
   popd
 
