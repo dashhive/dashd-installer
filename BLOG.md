@@ -280,7 +280,7 @@ Now we'll create a config file in `/opt/dashpay/etc/dash.conf` using that `rpcau
 vi /opt/dashpay/etc/dash.conf
 ```
 
-**To begin pastincg in vi**: hit the letter `i` (insert mode)
+**To begin pasting in vi**: hit the letter `i` (insert mode)
 
 `/opt/dashpay/etc/dash.conf`:
 
