@@ -229,7 +229,7 @@ netcat -v localhost 28332
 You can know for sure that the
 
 ```
-grep -r 'ENABLE_ZMQ' /opt/dashpay/deps/dash/config.log
+grep -r 'ENABLE_ZMQ' /opt/dashpay/src/dash/config.log
 ```
 
 If you see `#define ENABLE_ZMQ 0` instead of `#define ENABLE_ZMQ 1`, then you definitely don't have ZMQ support compiled in.
