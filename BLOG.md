@@ -75,7 +75,7 @@ A screen is a virtual Terminal that keeps your shell alive.
 If you're running over ssh and get disconnected, screen will keep running
 and you can reattach without having to start over.
 
-```
+```bash
 # Create or attach to a "screen" named "awesome"
 screen -xRS awesome
 ```
@@ -104,7 +104,7 @@ you only need to remove a single directory rather than reinstalling your operati
 
 First we'll create a directory structure in `/opt/dashpay` for all the dashpay-related things:
 
-```
+```bash
 # Create a directory where everything related to dashpay will go
 sudo mkdir -p /opt/dashpay
 
@@ -130,7 +130,7 @@ If you reboot your computer or start a new Terminal or Shell during
 this process, you'll need to rerun these commands.
 Additionally, you should not do other custom compiles in the same shell.
 
-```
+```bash
 export CPPFLAGS="-I/opt/dashpay/include ${CPPFLAGS:-}"
 export CXXFLAGS="$CPPFLAGS"
 export LDFLAGS="-L/opt/dashpay/lib ${LDFLAGS:-}"
@@ -153,7 +153,7 @@ sudo swapon /tmp/tmp.swap
 
 We'll go into our `/opt/dashpay/src` folder
 
-```
+```bash
 pushd /opt/dashpay/src
 ```
 
@@ -161,7 +161,7 @@ pushd /opt/dashpay/src
 
 Next we need to install a special version of BerkleyDB:
 
-```
+```bash
 # Download BDB v4.8
 wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 
@@ -224,7 +224,7 @@ popd
 Now we install `dashd` itself, which will take a *very* long time -
 probably 5 times as long as the other 3 combined.
 
-```
+```bash
 # Download dashd
 git clone --depth 1 https://github.com/dashpay/dash
 
@@ -245,14 +245,14 @@ popd
 
 Since we're done compiling, we can manually remove the swap space if we want:
 
-```
+```bash
 sudo swapoff /tmp/tmp.swap
 sudo rm /tmp/tmp.swap
 ```
 
 Lastly we can back out of `/opt/dashpay/src`:
 
-```
+```bash
 popd
 ```
 
@@ -309,7 +309,7 @@ uacomment=bitcore
 
 To run `dashd` you can do this:
 
-```
+```bash
 /opt/dashpay/bin/dashd -conf=/opt/dashpay/etc/dash.conf -datadir=/opt/dashpay/var
 ```
 
@@ -318,7 +318,7 @@ To run `dashd` you can do this:
 Next we can have dashd run on system start with `systemd` by placing a config file in `/etc/systemd/system/dashd.service` and enabling it:
 
 
-```
+```bash
 vi /etc/systemd/system/dashd.service
 ```
 
@@ -399,7 +399,7 @@ sudo systemctl start dashd
 
 Check the status of dashd with
 
-```
+```bash
 sudo journalctl -xefu dashd
 ```
 
