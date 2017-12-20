@@ -221,7 +221,7 @@ pushd zeromq-4.1.3/
 popd
 ```
 
-Lastly, we install `dashd` itself, which will take a *very* long time -
+Now we install `dashd` itself, which will take a *very* long time -
 probably 5 times as long as the other 3 combined.
 
 ```
