@@ -38,7 +38,11 @@ Everything for `dashd` installs to `/opt/dashpay`:
 /opt/dashpay/share
 ```
 
-*Uninstall*: `rm -rf /opt/dashpay`
+*Uninstall*:
+
+```bash
+rm -rf /opt/dashpay; userdel -r dash; groupdel dash; rm -f /etc/systemd/system/dashd.service
+```
 
 Configuration
 --------
@@ -79,20 +83,14 @@ Manual daemon control
 /opt/dashpay/bin/dashd -daemon -conf=/opt/dashpay/etc/dash.conf -datadir=/opt/dashpay/var
 ```
 
-From testnet to mainnet
+Setting rpc auth
 --------
 
-Replace `testnet=1` with `testnet=0` in `~/.dashcore/dash.conf`
-
-Setting rpcauth
---------
+`/opt/dashpay/etc/dash.conf`:
 
 ```
-/opt/dashpay/dash/share/rpcuser/rpcuser.py dashd
-String to be appended to /opt/dashpay/dash.conf:
-rpcauth=dashd:d390a090f89a2354a8f2492cefd53$733490c2dddc50f61802d2038e9d238a75d3d1dec6ca19240cb9399d9a7728f1
-Your password:
-UHpQuY6Xde8_HJVWwEMn928n7-O4O3mrSwOZ0pR0-PM=
+rpcuser=dash
+rpcpass=something random
 ```
 
 Resources
@@ -103,6 +101,17 @@ and http://raspnode.com/diyBitcoin.html
 
 Troubleshooting
 =====
+
+Raspberry Pi
+------------
+
+If you're running this on an ARM device there may be issues that cause the process to die several times.
+
+It may be best to manually go through the steps in the install script and just rerun any compile step that fails.
+Run it enough times and it will work eventually.
+
+I know that sounds random and computers shouldn't be random, but I think there may be either a bug in GCC or,
+perhaps more likely, a problem in the CPU or RAM on some of these ARM devices.
 
 configure: error: libdb_cxx headers missin
 ------------------------
