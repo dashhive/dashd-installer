@@ -13,6 +13,11 @@ This installs the following components to `/opt/dashpay`:
 * ZeroMQ
 * Dash Full Node [`dashpay/dash`](https://github.com/dashpay/dash)
 
+Screencast
+----------
+
+[![How to Install a Dash Masternode the Quick'n'Easy Way](https://img.youtube.com/vi/jmas2iufBmM/0.jpg)](https://www.youtube.com/watch?v=jmas2iufBmM)
+
 Installation
 -----
 
