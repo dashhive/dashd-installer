@@ -16,6 +16,11 @@ Windows (with the Ubuntu, Fedora, or Suse shells), and macOS (OS X).
 There are a few steps that are Debian/Ubuntu-specific, but it should not be difficult to find
 the commands you need for your specific operating system.
 
+Screencast
+------
+
+[![How to Install a Dash Masternode the Quick'n'Easy Way](https://img.youtube.com/vi/jmas2iufBmM/0.jpg)](https://www.youtube.com/watch?v=jmas2iufBmM)
+
 For the lazy: Automatic Installation
 -------
 
