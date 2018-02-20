@@ -92,7 +92,10 @@ pushd $my_tmpd
   popd
 
   # This installs support for libzmq3, as strange as that may seem by the numbers
-  wget http://download.zeromq.org/zeromq-4.1.3.tar.gz
+  wget https://github.com/zeromq/zeromq4-1/releases/download/v4.1.3/zeromq-4.1.3.tar.gz
+  # alternate location (if the above is down for maintainance or otherwise unavailable):
+  # http://download.zeromq.org/zeromq-4.1.3.tar.gz
+
   tar -zxvf zeromq-4.1.3.tar.gz
   pushd zeromq-4.1.3/
     ./configure --prefix=$my_prefix
