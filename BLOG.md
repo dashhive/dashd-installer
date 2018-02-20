@@ -280,7 +280,7 @@ vi /opt/dashpay/etc/dash.conf
 
 ```
 server=1
-whitelist=0.0.0.0/0
+whitelist=127.0.0.1/0
 txindex=1
 addressindex=1
 timestampindex=1
@@ -291,7 +291,7 @@ zmqpubhashblock=tcp://127.0.0.1:28332
 rpcuser=dashrpc
 rpcpassword=CHANGE_ME_PLEASE
 rpcport=9998
-rpcallowip=0.0.0.0/0
+rpcallowip=127.0.0.1/0
 uacomment=bitcore
 #debug=1
 #testnet=1
