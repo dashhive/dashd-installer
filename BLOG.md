@@ -288,10 +288,8 @@ spentindex=1
 zmqpubrawtx=tcp://127.0.0.1:28332
 zmqpubrawtxlock=tcp://127.0.0.1:28332
 zmqpubhashblock=tcp://127.0.0.1:28332
-rpcauth=dashd:d390a090f89a2354a8f2492cefd53$733490c2dddc50f61802d2038e9d238a75d3d1dec6ca19240cb9399d9a7728f1
-# the old way to do rpcauth:
-#rpcuser=dashrpc
-#rpcpassword=local321
+rpcuser=dashrpc
+rpcpassword=CHANGE_ME_PLEASE
 rpcport=9998
 rpcallowip=0.0.0.0/0
 uacomment=bitcore
