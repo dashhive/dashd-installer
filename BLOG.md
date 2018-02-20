@@ -266,22 +266,9 @@ popd
 Step 4: Configure and Daemonize
 ---------------
 
-The first thing we need to do is create an rpc user for `dashd`, which I'll arbitrarily call `dashrpc`:
+The first thing we need to do is create an rpc user for `dashd`, which I'll arbitrarily call `dashrpc`.
 
-```bash
-/opt/dashpay/src/dash/share/rpcuser/rpcuser.py dashrpc
-```
-
-That will print something like this:
-
-```
-String to be appended to /opt/dashpay/dash.conf:
-rpcauth=dashd:d390a090f89a2354a8f2492cefd53$733490c2dddc50f61802d2038e9d238a75d3d1dec6ca19240cb9399d9a7728f1
-Your password:
-UHpQuY6Xde8_HJVWwEMn928n7-O4O3mrSwOZ0pR0-PM=
-```
-
-Now we'll create a config file in `/opt/dashpay/etc/dash.conf` using that `rpcauth`:
+Now we'll create a config file in `/opt/dashpay/etc/dash.conf` using that `rpcuser` and `rpcpassword`:
 
 ```bash
 vi /opt/dashpay/etc/dash.conf
