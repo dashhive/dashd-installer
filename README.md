@@ -18,7 +18,7 @@ Screencast
 
 [![How to Install a Dash Masternode the Quick'n'Easy Way](https://img.youtube.com/vi/jmas2iufBmM/0.jpg)](https://www.youtube.com/watch?v=jmas2iufBmM)
 
-The HARD way: https://www.youtube.com/playlist?list=PLZaEVINf2Bq-8_NQf3RigTV9FSHLDwrof
+The HARD way: https://www.youtube.com/watch?v=bEIDRVZjd4A&list=PLZaEVINf2Bq-8_NQf3RigTV9FSHLDwrof
 
 Installation
 -----
