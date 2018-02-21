@@ -250,9 +250,9 @@ If you see `#define ENABLE_ZMQ 0` instead of `#define ENABLE_ZMQ 1`, then you de
 
 Solution:
 
-You should use `--prefix=/usr/local` when compiling libsodium, libzmq3, and then again
+You should use `--prefix=/opt/dashpay` (or `--prefix=/opt/bitpay` or `--prefix=/usr/local` or whatever) when compiling libsodium, libzmq3, and then again
 when compiling `bitcore`/`dashd` itself.
 
-```
-./configure --prefix=/usr/local
+```bash
+./configure --prefix=/opt/dashpay
 ```
