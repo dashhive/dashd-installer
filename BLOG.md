@@ -159,7 +159,7 @@ sudo swapon /tmp/tmp.swap
 We'll go into our `/opt/dashpay/src` folder
 
 ```bash
-pushd /opt/dashpay/src
+cd /opt/dashpay/src
 ```
 
 **Note**: Each of these next steps can take between several minutes (on a fast CPU) and *hours* (on a Raspberry Pi).
@@ -168,13 +168,16 @@ Next we need to install a special version of BerkleyDB:
 
 ```bash
 # Download BDB v4.8
-wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
+wget http://download.oracle.com/berkeley-db/db-4.8.30.zip
+# wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 
 # Extract it
-tar -xzvf db-4.8.30.NC.tar.gz
+sudo apt-get install unzip
+unzip db-4.8.30.zip
+# tar -xzvf db-4.8.30.NC.tar.gz
 
 # Go into the folder
-pushd db-4.8.30.NC/build_unix/
+cd db-4.8.30/build_unix/
 
   # configure and compile it
   ../dist/configure --prefix=/opt/dashpay --enable-cxx
@@ -185,7 +188,7 @@ pushd db-4.8.30.NC/build_unix/
   sudo ldconfig
 
 # back out of the folder
-popd
+cd ../../
 ```
 
 Next we need special versions of libsodium (crypto) and ZeroMQ (rpc messaging):
@@ -213,11 +216,10 @@ popd
 
 ```bash
 # This installs support for libzmq3, as strange as that may seem by the numbers
-wget http://download.zeromq.org/zeromq-4.1.3.tar.gz
-# alternate location (if the above is down for maintainance):
-# https://github.com/zeromq/zeromq4-1/releases/download/v4.1.3/zeromq-4.1.3.tar.gz
+wget https://github.com/zeromq/zeromq4-1/releases/download/v4.1.3/zeromq-4.1.3.tar.gz
+# 
 tar -zxvf zeromq-4.1.3.tar.gz
-pushd zeromq-4.1.3/
+cd zeromq-4.1.3/
 
   ./configure --prefix=/opt/dashpay
   make
@@ -225,29 +227,41 @@ pushd zeromq-4.1.3/
   sudo make install
   sudo ldconfig
 
-popd
+cd ../
 ```
 
 Now we install `dashd` itself, which will take a *very* long time -
 probably 5 times as long as the other 3 combined.
 
+Note: the conventional configuration gives the following error:
+`./bls/bls.h:14:27: fatal error: chiabls/bls.hpp: No such file or directory
+compilation terminated.` and so it is essential to incorporate a fix based on (issues raised by other users)[https://github.com/dashpay/dash/issues/2635]
+
 ```bash
+# Download missing submodule
+wget https://github.com/codablock/bls-signatures/archive/v20181101.zip
+
+# unzip submodule
+unzip v20181101.zip
+
+cd bls-signatures-20181101
+cmake .
+make install
+
+cd ..
+
 # Download dashd
 git clone --depth 1 https://github.com/dashpay/dash
 
-# Go into the folder
-pushd dash
-
-  # Configure and compile
+  cd dash/depends
+  make -j8
+  cd ..
   ./autogen.sh
   ./configure --prefix=/opt/dashpay --without-gui
-  make
-
-  # install to /opt/dashpay
-  sudo make install
+  make -j8
 
 # back out of the folder
-popd
+cd ../
 ```
 
 Since we're done compiling, we can manually remove the swap space if we want:
