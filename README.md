@@ -1,4 +1,8 @@
-dashd-installer.sh
+# Update
+
+Use <https://webinstall.dev/dashd/>.
+
+Original: dashd-installer.sh
 =======
 
 [dashd-installer.sh](https://github.com/dashhive/dashd-installer.sh) |
